@@ -102,7 +102,7 @@ export default {
         });
     },
     methods: {
-        handleClose(done) {
+        handleClose() {
             this.$router.push({ name: 'operate-activity' });
         },
         handleCancel() {

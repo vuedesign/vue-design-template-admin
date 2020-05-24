@@ -19,7 +19,7 @@ export default {
     },
     watch: {
         $route: {
-            handler(to, from) {
+            handler(to) {
                 this.updateBreadcrumb(to);
             },
             immediate: true
@@ -29,7 +29,7 @@ export default {
         updateBreadcrumb(to) {
             const { matched } = to;
             const breadcrumbs = [];
-            matched.forEach((item, index) => {
+            matched.forEach((item) => {
                 breadcrumbs.push({
                     name: item.name,
                     label: item.meta.label

@@ -17,7 +17,7 @@ export const list2map = (list = [], props = { key: 'value', value: 'label' }) =>
     return tempMap;
 };
 
-export const waiting = (time = 1000) => new Promise((resolve, reject) => {
+export const waiting = (time = 1000) => new Promise((resolve) => {
     setTimeout(() => {
         resolve();
     }, time);

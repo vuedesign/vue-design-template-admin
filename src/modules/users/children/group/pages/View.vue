@@ -45,7 +45,7 @@ export default {
     watch: {
         detail: {
             handler(nv, ov) {
-                console.log('nv', nv);
+                console.log('nv', nv, ov);
                 Object.assign(this.formData, nv);
             },
             deep: true

@@ -13,12 +13,12 @@ const state = {
 };
 
 const actions = {
-    findMenu: ({ commit }) => new Promise((resolve, reject) => {
+    findMenu: ({ commit }) => new Promise((resolve) => {
         const menuAsideData = config('menuAside.json');
         commit(types.ASIDE_MENU, menuAsideData);
         resolve(menuAsideData);
     }),
-    permission: ({ commit }) => new Promise((resolve, reject) => {
+    permission: ({ commit }) => new Promise((resolve) => {
         setTimeout(() => {
             const permissionData = config('permission.json');
             const menuAsideData = list2tree(permissionData);

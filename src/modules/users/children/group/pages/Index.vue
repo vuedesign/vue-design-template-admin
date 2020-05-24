@@ -104,6 +104,7 @@ export default {
             this.$router.push({ name: 'users-group-edit', params: { id } });
         },
         handleDelClick({ id }) {
+            console.log(id);
             // this.$router.push({ name: 'users-group-update' });
         },
         handleViewClick({ id }) {

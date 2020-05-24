@@ -85,7 +85,7 @@ export default {
         });
     },
     methods: {
-        handleClose(done) {
+        handleClose() {
             this.$router.push({ name: 'users-group' });
         },
         handleCancel() {

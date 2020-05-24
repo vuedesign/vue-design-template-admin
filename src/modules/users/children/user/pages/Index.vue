@@ -60,6 +60,7 @@ export default {
             this.$router.push({ name: 'users-user-edit', params: { id } });
         },
         handleDelClick({ id }) {
+            console.log(id);
             // this.$router.push({ name: 'users-user-update' });
         },
         handleViewClick({ id }) {

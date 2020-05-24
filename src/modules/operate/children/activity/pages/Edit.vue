@@ -105,14 +105,14 @@ export default {
     },
     watch: {
         item: {
-            handler(nv, ov) {
+            handler(nv) {
                 Object.assign(this.formData, nv);
             },
             deep: true
         }
     },
     methods: {
-        handleClose(done) {
+        handleClose() {
             this.$router.push({ name: 'operate-activity' });
         },
         handleCancel() {

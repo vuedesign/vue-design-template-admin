@@ -71,7 +71,7 @@ export default {
         handleCollapseClick() {
             this.isCollapse = !this.isCollapse;
         },
-        handleSelect(index, indexPath) {
+        handleSelect(index) {
             this.$router.push({
                 name: index,
                 params: {

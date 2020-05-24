@@ -45,7 +45,7 @@ const destroy = async({ dispatch }, id) => {
     dispatch('find');
 };
 
-const updateOne = async({ commit, dispatch }, data) => {
+const updateOne = async({ dispatch }, data) => {
     const { id } = data;
     delete data.id;
     await api.updateOne(id, data);

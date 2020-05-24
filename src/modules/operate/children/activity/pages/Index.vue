@@ -107,6 +107,7 @@ export default {
     watch: {
         filters: {
             handler(nv, ov) {
+                console.log(nv, ov);
                 this.$store.dispatch('operate/activity/find');
             },
             deep: true
@@ -126,6 +127,7 @@ export default {
             this.$router.push({ name: 'operate-activity-edit', params: { id } });
         },
         handleDelClick({ id }) {
+            console.log(id);
             // this.$router.push({ name: 'operate-activity-update' });
         },
         handleViewClick({ id }) {

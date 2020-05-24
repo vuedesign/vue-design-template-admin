@@ -30,7 +30,7 @@ export default {
     },
     watch: {
         asideMenu: {
-            handler(nv, ov) {
+            handler(nv) {
                 if (nv && nv.length > 0) {
                     const actions = this.getActions(nv, this.$route.name);
                     this.$store.commit('admin/ACTIONS', actions);
