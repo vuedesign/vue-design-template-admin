@@ -6,8 +6,6 @@ const vendorContextJs = require.context('@vendors', true, /^\.\/([a-zA-Z0-9_-]*)
 const vendorCacheJs = getCache(vendorContextJs);
 const plugins = config('plugins.js') || {};
 
-console.log('vendorContextVue', vendorContextVue);
-
 function getCache(context) {
     let cache = {};
     context.keys().forEach(key => {

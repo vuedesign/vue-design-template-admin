@@ -61,7 +61,6 @@ Object.keys(moduleCache).forEach(key => {
     }
     if (routesJs) {
         const routeConfig = getRouteConfig(routesJs);
-        console.log('routeConfig', routeConfig);
         if (children) {
             if (!routeConfig['children']) {
                 routeConfig['children'] = [];
@@ -120,8 +119,6 @@ function getRouteConfigs(routeConfig) {
     }
     return [routeConfig];
 }
-
-console.log('====', rootRoutes, modules);
 
 export {
     rootRoutes,
