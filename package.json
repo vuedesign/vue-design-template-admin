@@ -7,7 +7,8 @@
   "scripts": {
     "serve": "npx vue-cli-service serve",
     "build": "npx vue-cli-service build",
-    "lint": "npx vue-cli-service lint"
+    "lint": "npx vue-cli-service lint",
+    "mock": "npx vd mock"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
@@ -16,7 +17,6 @@
     "js-cookie": "^2.2.1",
     "list-to-tree": "^2.2.3",
     "vue": "^2.6.11",
-    "vue-design-core": "^0.1.7",
     "vuex": "^3.1.3"
   },
   "devDependencies": {

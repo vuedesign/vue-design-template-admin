@@ -31,8 +31,18 @@ module.exports = {
               '@configs': resolve('src/configs'),
               '@globals': resolve('src/globals'),
               '@vendors': resolve('src/vendors'),
-              '@assets': resolve('src/assets')
+              '@assets': resolve('src/assets'),
+              'vue-design-core': resolve('src/core'),
             }
+        }
+    },
+    devServer: {
+        proxy: {
+          '/api': {
+            target: 'http://localhost:3000/api',
+            ws: true,
+            changeOrigin: true
+          }
         }
     }
 };
