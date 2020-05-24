@@ -6,6 +6,8 @@ const vendorContextJs = require.context('@vendors', true, /^\.\/([a-zA-Z0-9_-]*)
 const vendorCacheJs = getCache(vendorContextJs);
 const plugins = config('plugins.js') || {};
 
+console.log('vendorContextVue', vendorContextVue);
+
 function getCache(context) {
     let cache = {};
     context.keys().forEach(key => {
@@ -23,8 +25,8 @@ function getCache(context) {
 
 export default function vendors(Vue) {
     vendorContextVue.keys().forEach(key => {
-        const c = vendorContextVue(key);
-        Vue.component(c.default.name, c);
+        const c = vendorContextVue(key).default;
+        Vue.component(c.name, c);
     });
     Object.keys(vendorCacheJs).forEach(key => {
         const item = vendorCacheJs[key];

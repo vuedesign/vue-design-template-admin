@@ -3,7 +3,7 @@
  */
 
 export default {
-    path: '/dashboard',
+    path: 'dashboard',
     name: 'dashboard',
     meta: {
         label: '面板'

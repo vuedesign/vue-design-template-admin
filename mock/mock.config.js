@@ -18,5 +18,5 @@ module.exports = {
     },
     port: 3000,
     prefix: '/api/v1',
-    delay: 500
+    delay: 200
 };

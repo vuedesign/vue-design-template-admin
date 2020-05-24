@@ -110,7 +110,7 @@ export default {
             });
         },
         handleHeaderNav(item, index) {
-            this.$message('click on more item');
+            this.$message('click on more item', item, index);
         }
     }
 };

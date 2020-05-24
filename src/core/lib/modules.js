@@ -61,8 +61,12 @@ Object.keys(moduleCache).forEach(key => {
     }
     if (routesJs) {
         const routeConfig = getRouteConfig(routesJs);
+        console.log('routeConfig', routeConfig);
         if (children) {
-            routeConfig[0]['children'] = getChildrenRoute(children);
+            if (!routeConfig['children']) {
+                routeConfig['children'] = [];
+            }
+            routeConfig['children'] = getChildrenRoute(children);
         }
         if (!configJson || configJson.root === undefined || !configJson.root) {
             childrenRoutes.push(...getRouteConfigs(routeConfig));
@@ -116,6 +120,8 @@ function getRouteConfigs(routeConfig) {
     }
     return [routeConfig];
 }
+
+console.log('====', rootRoutes, modules);
 
 export {
     rootRoutes,
