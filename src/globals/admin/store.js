@@ -5,7 +5,6 @@ import { list2tree } from '@vendors/utils';
 import * as types from './types';
 
 const state = {
-    branchTitle: 'VueDesign',
     asideMenu: [],
     permission: [],
     actions: [],
@@ -40,10 +39,6 @@ const mutations = {
     },
     [types.ASIDE_ACTIVE](state, asideActive) {
         state.asideActive = asideActive;
-    },
-    [types.SEO_TITLE](state, to) {
-        const { label } = to.meta;
-        document.title = `${state.branchTitle}-${label}`;
     }
 };
 

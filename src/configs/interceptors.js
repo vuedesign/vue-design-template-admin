@@ -44,7 +44,7 @@ export const ajaxResponseFailure = error => Promise.reject(error);
  * @param { to, from, next } param
  */
 export const routerBeforeEach = ({ to, next }) => {
-    store.commit('admin/SEO_TITLE', to);
+    store.commit('common/SEO_TITLE', to);
     next();
 };
 
