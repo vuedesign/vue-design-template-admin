@@ -119,6 +119,9 @@ export default {
         .el-menu-item{
             height: $aside-bar-size !important;
             line-height: $aside-bar-size !important;
+            span{
+                padding-left: 5px;
+            }
         }
         .el-submenu__title{
             i,
@@ -128,7 +131,7 @@ export default {
                 line-height: 16px;
             }
             span{
-                padding-top: 1px;
+                padding-left: 5px;
             }
         }
     }
