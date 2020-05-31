@@ -8,7 +8,7 @@ export default {
     meta: {
         label: '用户运营'
     },
-    component: () => import('./pages/Index'),
+    component: () => import(/* webpackChunkName: "operate" */'./pages/Index'),
     redirect: 'operate/activity',
     children: []
 };

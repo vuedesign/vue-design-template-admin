@@ -8,7 +8,7 @@ export default {
     meta: {
         label: '用户中心'
     },
-    component: () => import('./pages/Index'),
+    component: () => import(/* webpackChunkName: "users" */'./pages/Index'),
     redirect: 'users/user',
     children: []
 };

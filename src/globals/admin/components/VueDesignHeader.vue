@@ -62,8 +62,8 @@
                         <dl>
                             <dt><span class="avatar-big"></span></dt>
                             <dd>
-                                <h4>wujian</h4>
-                                <p>wujian@aaa.cn</p>
+                                <h4>n.see</h4>
+                                <p>n.see@qq.com</p>
                             </dd>
                         </dl>
                         <ul>

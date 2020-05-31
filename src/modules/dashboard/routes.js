@@ -8,5 +8,5 @@ export default {
     meta: {
         label: '面板'
     },
-    component: () => import('./pages/Index')
+    component: () => import(/* webpackChunkName: "dashboard" */'./pages/Index')
 };

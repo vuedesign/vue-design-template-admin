@@ -5,7 +5,7 @@ export default [
         meta: {
             label: '用户组'
         },
-        component: () => import('./pages/Index'),
+        component: () => import(/* webpackChunkName: "users" */'./pages/Index'),
         children: [
             {
                 path: 'add',
@@ -13,7 +13,7 @@ export default [
                 meta: {
                     label: '新增用户'
                 },
-                component: () => import('./pages/Add')
+                component: () => import(/* webpackChunkName: "users" */'./pages/Add')
             },
             {
                 path: 'edit/:id',
@@ -21,7 +21,7 @@ export default [
                 meta: {
                     label: '编辑用户'
                 },
-                component: () => import('./pages/Edit')
+                component: () => import(/* webpackChunkName: "users" */'./pages/Edit')
             },
             {
                 path: 'view/:id',
@@ -29,7 +29,7 @@ export default [
                 meta: {
                     label: '编辑用户'
                 },
-                component: () => import('./pages/View')
+                component: () => import(/* webpackChunkName: "users" */'./pages/View')
             }
         ]
     }

@@ -8,7 +8,7 @@ export default {
     meta: {
         label: '错误'
     },
-    component: () => import('./pages/Index'),
+    component: () => import(/* webpackChunkName: "error" */'./pages/Index'),
     redirect: 'error/404',
     children: [
         {
@@ -17,7 +17,7 @@ export default {
             meta: {
                 label: '403'
             },
-            component: () => import('./pages/403')
+            component: () => import(/* webpackChunkName: "error" */'./pages/403')
         },
         {
             path: '404',
@@ -25,7 +25,7 @@ export default {
             meta: {
                 label: '404'
             },
-            component: () => import('./pages/404')
+            component: () => import(/* webpackChunkName: "error" */'./pages/404')
         },
         {
             path: '500',
@@ -33,7 +33,7 @@ export default {
             meta: {
                 label: '500'
             },
-            component: () => import('./pages/500')
+            component: () => import(/* webpackChunkName: "error" */'./pages/500')
         },
         {
             path: '502',
@@ -41,7 +41,7 @@ export default {
             meta: {
                 label: '502'
             },
-            component: () => import('./pages/502')
+            component: () => import(/* webpackChunkName: "error" */'./pages/502')
         }
     ]
 };

@@ -8,7 +8,7 @@ export default [
         redirect: {
             name: 'dashboard'
         },
-        component: () => import('./pages/Index'),
+        component: () => import(/* webpackChunkName: "admin" */'./pages/Index'),
         children: []
     }
 ];
