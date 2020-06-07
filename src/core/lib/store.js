@@ -8,7 +8,7 @@ export default function vueDesignStore(Vue, options = {}) {
     Vue.use(Vuex);
 
     const {
-        modules,
+        modules = {},
         state = {}, 
         mutations = {},
         getters = {}
