@@ -54,13 +54,8 @@ export default function vueDesignHttp(Vue, options = {}) {
  */
 function injectionTimestamp(config) {
     const timestamp = new Date().getTime();
-    if (config.params) {
-        config.params = Object.assign({}, config.params, {
-            timestamp
-        });
-    } else {
-        config.params = {
-            timestamp
-        };
-    }
+    const { params = {} } = config;
+    Object.assign(params, {
+        timestamp
+    });
 }

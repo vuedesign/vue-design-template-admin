@@ -10,6 +10,10 @@ const configCache = (() => {
     return cacheData;
 })();
 
+/**
+ * 
+ * @param {string} fileName 
+ */
 export function config(fileName) {
     return getConfig(configCache, fileName);
 }
