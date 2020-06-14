@@ -31,12 +31,14 @@ const http = vueDesignHttp(Vue, {
     interceptors 
 });
 
+// 实例配置
 const defaultOptions = {
     router,
     store,
     render: h => h(App)
 };
 
+// 继承Vue
 class VueDesign extends Vue {
     constructor(options = {}) {
         super(Object.assign(defaultOptions, options));
