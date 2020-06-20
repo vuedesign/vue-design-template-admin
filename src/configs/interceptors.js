@@ -1,55 +1,46 @@
 import { store } from 'vue-design-core';
 import { SUCCESS_STATUS_CODE } from './constants';
+import {
+    onGlobalConfig,
+    onHttpRequestSuccess,
+    onHttpRequestFailure,
+    onHttpResponseSuccess,
+    onHttpResponseFailure,
+    onRouterBeforeEach,
+    onRouterAfterEach,
+    onRouterBeforeResolve
+} from 'vue-design-core/lib/interceptors';
 
-// let token = 'VHJK324567YU345667POIU';
-export const isTimestampDisabled = false;
+onGlobalConfig(config => {
+    config.isTimestampDisabled = false;
+});
 
-/**
- * ajax请求成功
- * @param config
- * @returns {*}
- */
-export const ajaxRequestSuccess = (config) => {
-    console.log('config', config);
-    return config;
-};
+// 请求成功
+onHttpRequestSuccess(config => config);
 
-/**
- * ajax请求失败
- * @param error
- * @returns {Promise<never>}
- */
-export const ajaxRequestFailure = error => Promise.reject(error);
+// 请求失败
+onHttpRequestFailure(error => Promise.reject(error));
 
-/**
- * ajax返回成功
- * @param response
- * @returns {*}
- */
-export const ajaxResponseSuccess = (response) => {
+// 返回成功
+onHttpResponseSuccess((response) => {
     if (response.status === SUCCESS_STATUS_CODE) {
         return response.data;
     }
     return Promise.reject(response);
-};
+});
 
-/**
- * ajax返回失败
- * @param error
- * @returns {Promise<never>}
- */
-export const ajaxResponseFailure = error => Promise.reject(error);
+// 返回失败
+onHttpResponseFailure(error => Promise.reject(error));
 
-/**
- * @param { to, from, next } param
- */
-export const routerBeforeEach = ({ to, next }) => {
+// 路由进入之前
+onRouterBeforeEach(({ to, next }) => {
     store.commit('common/SEO_TITLE', to);
     next();
-};
+});
 
-export const routerBeforeResolve = ({ next }) => {
+// 路由进入之后
+onRouterAfterEach(() => {});
+
+onRouterBeforeResolve(({ next }) => {
     next();
-};
-
-export const routerAfterEach = () => {};
+});

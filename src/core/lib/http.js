@@ -19,28 +19,31 @@ export default function vueDesignHttp(Vue, options = {}) {
         if (!interceptors.isTimestampDisabled) {
             injectionTimestamp(config);
         }
-        if (interceptors.ajaxRequestSuccess) {
-            return interceptors.ajaxRequestSuccess(config);
-        }
+        // if (interceptors.httpRequestSuccess) {
+        //     interceptors.httpRequestSuccess(config);
+        // }
         return config;
     }, error => {
-        if (interceptors.ajaxRequestFailure) {
-            return interceptors.ajaxRequestFailure(error);
+        if (interceptors.httpRequestFailure) {
+            return interceptors.httpRequestFailure(error);
         }
         return Promise.reject(error);
     });
 
-    instance.interceptors.response.use(response => {
-        if (interceptors.ajaxResponseSuccess) {
-            return interceptors.ajaxResponseSuccess(response.data);
+    const success = response => {
+        console.log('response', response);
+        if (interceptors.httpResponseSuccess) {
+            return interceptors.httpResponseSuccess(response.data);
         }
         return response.data;
-    }, error => {
-        if (interceptors.ajaxResponseFailure) {
-            return interceptors.ajaxResponseFailure(error);
+    };
+    const error = error => {
+        if (interceptors.httpResponseFailure) {
+            return interceptors.httpResponseFailure(error);
         }
         return Promise.reject(error);
-    });
+    };
+    instance.interceptors.response.use(success, error);
 
     Vue.prototype.$http = instance;
     Vue.http = instance;

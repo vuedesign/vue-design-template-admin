@@ -5,6 +5,7 @@ import { config } from './configs';
 import vueDesignRouter from './router';
 import vueDesignStore from './store';
 import vueDesignHttp from './http';
+import interceptors from './interceptors';
 import vendors from './vendors';
 import components from './components';
 import cookies from './plugins/cookies';
@@ -16,7 +17,7 @@ components(Vue);
 
 Vue.use(cookies);
 
-const interceptors = config('interceptors.js');
+config('interceptors.js');
 
 const router = vueDesignRouter(Vue, {
     rootRoutes,
@@ -28,7 +29,7 @@ const store = vueDesignStore(Vue, {
 });
 
 const http = vueDesignHttp(Vue, {
-    interceptors 
+    interceptors
 });
 
 // 实例配置
