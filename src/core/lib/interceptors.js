@@ -1,4 +1,6 @@
-let interceptors = {};
+let interceptors = {
+    isTimestampDisabled: false
+};
 
 export const onHttpRequestSuccess = (fn) => {
     interceptors['httpRequestSuccess'] = (config) => {
@@ -43,7 +45,6 @@ export const onRouterBeforeResolve = (fn) => {
 };
 
 export const onGlobalConfig = (fn) => {
-    interceptors['isTimestampDisabled'] = false;
     fn && fn(interceptors);
 };
 

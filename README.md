@@ -45,3 +45,65 @@ npm run mock
 npm run serve
 ```
 
+### api
+
+##### core `vue-design-core`
+```js
+import { 
+    store, // 状态上下文对象，与this.$store一样
+    router, // 路由上下文对象，与this.$router一样
+    http, // 路由上下文对象，与this.$http一样
+} from 'vue-design-core';
+```
+
+##### 拦截器 `vue-design-core/lib/interceptors`
+```js
+import { store } from 'vue-design-core';
+import { SUCCESS_STATUS_CODE } from './constants';
+import {
+    onGlobalConfig,
+    onHttpRequestSuccess,
+    onHttpRequestFailure,
+    onHttpResponseSuccess,
+    onHttpResponseFailure,
+    onRouterBeforeEach,
+    onRouterAfterEach,
+    onRouterBeforeResolve
+} from 'vue-design-core/lib/interceptors';
+
+// 拦截器配置
+onGlobalConfig(config => {
+    // 
+    config.isTimestampDisabled = false;
+});
+
+// 请求成功
+onHttpRequestSuccess(config => config);
+
+// 请求失败
+onHttpRequestFailure(error => Promise.reject(error));
+
+// 返回成功
+onHttpResponseSuccess((response) => {
+    if (response.status === SUCCESS_STATUS_CODE) {
+        return response.data;
+    }
+    return Promise.reject(response);
+});
+
+// 返回失败
+onHttpResponseFailure(error => Promise.reject(error));
+
+// 路由进入之前
+onRouterBeforeEach(({ to, next }) => {
+    store.commit('common/SEO_TITLE', to);
+    next();
+});
+
+// 路由进入之后
+onRouterAfterEach(() => {});
+
+onRouterBeforeResolve(({ next }) => {
+    next();
+});
+```
