@@ -73,7 +73,7 @@ import {
 
 // 拦截器配置
 onGlobalConfig(config => {
-    // 
+    // 时间戳注入开关
     config.isTimestampDisabled = false;
 });
 
