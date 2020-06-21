@@ -1,5 +1,5 @@
 /**
- * Created by n.see on 2018/10/25.
+ * Created by n.see on 2020/06/21.
  */
 import axios from 'axios';
 
@@ -13,37 +13,38 @@ export default function vueDesignHttp(Vue, options = {}) {
         baseURL
     });
 
-    instance.interceptors.request.use(config => {
+    const requestSuccess = config => {
         // 在 interceptors.js 关闭时间戳注入
         // export const isTimestampDisabled = false;
         if (!interceptors.isTimestampDisabled) {
             injectionTimestamp(config);
         }
-        // if (interceptors.httpRequestSuccess) {
-        //     interceptors.httpRequestSuccess(config);
-        // }
+        if (interceptors.httpRequestSuccess) {
+            return interceptors.httpRequestSuccess(config);
+        }
         return config;
-    }, error => {
+    };
+    const requestError = error => {
         if (interceptors.httpRequestFailure) {
             return interceptors.httpRequestFailure(error);
         }
         return Promise.reject(error);
-    });
-
-    const success = response => {
-        console.log('response', response);
+    };
+    const responseSuccess = response => {
         if (interceptors.httpResponseSuccess) {
             return interceptors.httpResponseSuccess(response.data);
         }
         return response.data;
     };
-    const error = error => {
+    const responseError = error => {
         if (interceptors.httpResponseFailure) {
             return interceptors.httpResponseFailure(error);
         }
         return Promise.reject(error);
     };
-    instance.interceptors.response.use(success, error);
+
+    instance.interceptors.request.use(requestSuccess, requestError);
+    instance.interceptors.response.use(responseSuccess, responseError);
 
     Vue.prototype.$http = instance;
     Vue.http = instance;

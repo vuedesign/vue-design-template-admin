@@ -2,49 +2,35 @@ let interceptors = {
     isTimestampDisabled: false
 };
 
-export const onHttpRequestSuccess = (fn) => {
-    interceptors['httpRequestSuccess'] = (config) => {
-        return fn && fn(config);
-    };
+export const onHttpRequestSuccess = fn => {
+    interceptors.httpRequestSuccess = config => fn ? fn(config) : config;
 };
 
-export const onHttpRequestFailure = (fn) => {
-    interceptors['httpRequestFailure'] = (config) => {
-        return fn && fn(config);
-    };
+export const onHttpRequestFailure = fn => {
+    interceptors.httpRequestFailure = error => fn ? fn(error) : error;
 };
 
-export const onHttpResponseSuccess = (fn) => {
-    interceptors['httpResponseSuccess'] = (res) => {
-        return fn && fn(res);
-    };
+export const onHttpResponseSuccess = fn => {
+    interceptors.httpResponseSuccess = res => fn ? fn(res) : res;
 };
 
-export const onHttpResponseFailure = (fn) => {
-    interceptors['httpResponseFailure'] = (err) => {
-        return fn && fn(err);
-    };
+export const onHttpResponseFailure = fn => {
+    interceptors.httpResponseFailure = error => fn ? fn(error) : error;
 };
 
-export const onRouterBeforeEach = (fn) => {
-    interceptors['routerBeforeEach'] = (options) => {
-        return fn && fn(options);
-    };
+export const onRouterBeforeEach = fn => {
+    interceptors.routerBeforeEach = options => fn ? fn(options) : options;
 };
 
-export const onRouterAfterEach = (fn) => {
-    interceptors['routerAfterEach'] = (options) => {
-        return fn && fn(options);
-    };
+export const onRouterAfterEach = fn => {
+    interceptors.routerAfterEach = options => fn ? fn(options) : options;
 };
 
-export const onRouterBeforeResolve = (fn) => {
-    interceptors['routerBeforeResolve'] = (options) => {
-        return fn && fn(options);
-    };
+export const onRouterBeforeResolve = fn => {
+    interceptors.routerBeforeResolve = options => fn ? fn(options) : options;
 };
 
-export const onGlobalConfig = (fn) => {
+export const onGlobalConfig = fn => {
     fn && fn(interceptors);
 };
 
