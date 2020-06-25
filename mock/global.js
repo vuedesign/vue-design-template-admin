@@ -3,7 +3,7 @@ module.exports = {
         return {
             'root|20': [
                 {
-                    'id|+1': 1,
+                    'id|+1': 10000,
                     name: '@cname()',
                     thumb: '@image("64")',
                     region: '@cname()',

@@ -19,16 +19,16 @@ Vue.use(cookies);
 
 config('interceptors.js');
 
-const router = vueDesignRouter(Vue, {
+export const router = vueDesignRouter(Vue, {
     rootRoutes,
     interceptors
 });
 
-const store = vueDesignStore(Vue, {
+export const store = vueDesignStore(Vue, {
     modules
 });
 
-const http = vueDesignHttp(Vue, {
+export const http = vueDesignHttp(Vue, {
     interceptors
 });
 
@@ -39,18 +39,11 @@ const defaultOptions = {
     render: h => h(App)
 };
 
-// 继承Vue
-class VueDesign extends Vue {
-    constructor(options = {}) {
-        super(Object.assign(defaultOptions, options));
-    }
-}
+export const createApp = (el = '#app', options = {}) => {
+    Object.assign(defaultOptions, options)
+    return new Vue(defaultOptions).$mount(el);
+};
 
 export {
-    router,
-    store,
-    http,
     App
-}
-
-export default VueDesign;
+};

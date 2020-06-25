@@ -4,8 +4,6 @@ export {
     router,
     store,
     http,
-    App
+    App,
+    createApp
 } from './lib/vueDesign';
-
-import VueDesign from './lib/vueDesign';
-export default VueDesign;
