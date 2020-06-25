@@ -41,7 +41,7 @@ sudo npm install vue-cli -g
 - vue.config.js
 
 ```js
-   const path = require('path');
+const path = require('path');
 
 function resolve (dir) {
     return path.join(__dirname, dir)
