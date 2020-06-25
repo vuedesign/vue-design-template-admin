@@ -1,7 +1,7 @@
 # vue-design-template-admin
 业务后台模版
 
-## 依赖相关框架与库
+### 依赖相关框架与库
 
 - [vue](https://vuejs.org/)
 - [vuex](https://vuex.vuejs.org/)
@@ -11,14 +11,14 @@
 - [vue-cli](https://cli.vuejs.org/)
 - [vue-design-mock](https://github.com/vuedesign/vue-design-mock)
 
-## 安装与使用
+### 安装与使用
 
-### 下载
+#### 下载
 ```bash
 git clone git@github.com:vuedesign/vue-design-template-admin.git
 ```
 
-### 安装依赖
+#### 安装依赖
 ```bash
 # 进入当前目录
 cd vue-design-template-admin
@@ -26,7 +26,7 @@ cd vue-design-template-admin
 npm install
 ```
 
-# 安装 mock 与 vue-cli
+#### 安装 mock 与 vue-cli
 
 ```bash
 # window
@@ -37,7 +37,64 @@ sudo npm install vue-design-mock -g
 sudo npm install vue-cli -g
 ```
 
-### 启动
+#### 配置
+- vue.config.js
+
+```js
+   const path = require('path');
+
+function resolve (dir) {
+    return path.join(__dirname, dir)
+}
+
+module.exports = {
+    pages: {
+        app: {
+            // page 的入口
+            entry: 'src/main.js',
+            // 模板来源
+            template: 'index.html',
+            // 在 dist/index.html 的输出
+            filename: 'index.html',
+            // 当使用 title 选项时，
+            // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
+            title: 'vue-design-template-admin',
+            // 在这个页面中包含的块，默认情况下会包含
+            // 提取出来的通用 chunk 和 vendor chunk。
+            chunks: ['chunk-vendors', 'chunk-common', 'app']
+        }
+    },
+    configureWebpack: {
+        resolve: {
+            extensions: ['.js', '.vue', '.json'],
+            alias: {
+              'vue$': 'vue/dist/vue.esm.js',
+              '@': resolve('src'),
+              '@modules': resolve('src/modules'),
+              '@configs': resolve('src/configs'),
+              '@globals': resolve('src/globals'),
+              '@vendors': resolve('src/vendors'),
+              '@assets': resolve('src/assets'),
+              'vue-design-core': resolve('src/core'),
+            }
+        }
+    },
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                ws: true,
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': '/api'   //重写接口
+                }
+            }
+        }
+    }
+};
+```
+
+#### 启动
 ```bash
 # 启动 mock
 npm run mock
@@ -114,59 +171,4 @@ onRouterAfterEach(() => {});
 onRouterBeforeResolve(({ next }) => {
     next();
 });
-```
-
-##### vue.config.js
-```js
-   const path = require('path');
-
-function resolve (dir) {
-    return path.join(__dirname, dir)
-}
-
-module.exports = {
-    pages: {
-        app: {
-            // page 的入口
-            entry: 'src/main.js',
-            // 模板来源
-            template: 'index.html',
-            // 在 dist/index.html 的输出
-            filename: 'index.html',
-            // 当使用 title 选项时，
-            // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-            title: 'vue-design-template-admin',
-            // 在这个页面中包含的块，默认情况下会包含
-            // 提取出来的通用 chunk 和 vendor chunk。
-            chunks: ['chunk-vendors', 'chunk-common', 'app']
-        }
-    },
-    configureWebpack: {
-        resolve: {
-            extensions: ['.js', '.vue', '.json'],
-            alias: {
-              'vue$': 'vue/dist/vue.esm.js',
-              '@': resolve('src'),
-              '@modules': resolve('src/modules'),
-              '@configs': resolve('src/configs'),
-              '@globals': resolve('src/globals'),
-              '@vendors': resolve('src/vendors'),
-              '@assets': resolve('src/assets'),
-              'vue-design-core': resolve('src/core'),
-            }
-        }
-    },
-    devServer: {
-        proxy: {
-            '/api': {
-                target: 'http://localhost:3000',
-                ws: true,
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/api': '/api'   //重写接口
-                }
-            }
-        }
-    }
-};
 ```
